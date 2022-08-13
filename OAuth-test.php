@@ -11,9 +11,9 @@
     <script src="/js/api/openapi.js"></script>
     <script>
       var oauth = {
-        client_id: '[YOURS_CLIENT_ID]',
+        client_id: '<?=$client_id?>',
         scope: 'email,login,id,drive_key',
-        redirect_uri: '[YOURS_REDIRECT_URI]',
+        redirect_uri: '<?=$redirect_uri?>',
         display: 'popup',
       };
 
