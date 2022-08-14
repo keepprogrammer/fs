@@ -8,7 +8,7 @@
       $redirect_uri = '[redirect_uri]';
       
     ?>
-    <script src="/js/api/openapi.js"></script>
+    <script src="https://friendschool.ct8.pl/js/api/openapi.js"></script>
     <script>
       var oauth = {
         client_id: '<?=$client_id?>',
