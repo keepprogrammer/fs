@@ -36,8 +36,8 @@
         <?php
   $url = 'https://oauth.friendschool.ct8.pl';
 
-  if ($_GET['textNoSuccessOAuth']==true) {
-    echo $_GET['textNoSuccessOAuth'];
+  if ($_GET['error']=='access_danied') {
+    echo 'ups coś poszło nie tak.';
     exit;
   }
 
