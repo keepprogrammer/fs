@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>Friendschool OAuth authorize</title>
     <?php
-      $client_id = '[client_id]';
-      $redirect_uri = '[redirect_uri]';
+      $client_id = 'YOURS_client_id';
+      $redirect_uri = 'YOURS_redirect_uri';
     ?>
     <script src="https://friendschool.ct8.pl/js/api/openapi.js"></script>
     <script>
       var oauth = {
-        client_id: '<?=$client_id?>',
-        scope: 'email,login,id,drive_key',
-        redirect_uri: '<?=$redirect_uri?>',
-        display: 'popup',
+        client_id: '<?=$client_id?>', // klient id aplikacji.
+        scope: 'email,login,id,drive_key', // drive_key - jest poufną informacją.
+        redirect_uri: '<?=$redirect_uri?>', // redirect_uri - adres przekierowania gdzie znajduje się callback.
+        display: 'page', // page lub popup.
       };
       function loginFs() {
         FS.auth({
@@ -29,9 +29,9 @@
     <a onclick="loginFs()">Zaloguj się przez Friendschool</a>
     <br>
     <?php
-      $url = 'https://oauth.friendschool.ct8.pl';
+      $url = 'https://oauth.friendschool.ct8.pl'; // url skąd będzie wyciągana informacja.
 
-      if ($_GET['error']=='access_danied') {
+      if ($_GET['error']=='access_danied') { // jak użytkownik nacisął NIE w dialogie OAuth.
         echo 'ups coś poszło nie tak.';
         exit;
       }
@@ -41,10 +41,10 @@
 
         $params = http_build_query(array(
           "client_id" => $client_id,
-          "code" => $_GET['code']
+          "code" => $_GET['code'] // kod który dostaniesz od dialogu OAuth, jak użytkownik nacisął a diaologie Tak.
         ));
 
-        $token = json_decode(file_get_contents($url . '/user/authorize?'.$params), true);
+        $token = json_decode(file_get_contents($url.'/user/authorize?'.$params), true);
 
         if ($token['description']) {
           $userInfo = $token['description'];
