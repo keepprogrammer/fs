@@ -43,8 +43,17 @@
           "client_id" => $client_id,
           "code" => $_GET['code'] // kod który dostaniesz od dialogu OAuth, jak użytkownik nacisął a diaologie Tak.
         ));
-
-        $token = json_decode(file_get_contents($url.'/user/authorize?'.$params), true);
+        
+        $tokenFGC = @file_get_contents($url.'/user/authorize'.$params);
+        $token = json_decode($tokenFGC, true);
+        //
+        if (strpos($http_response_header[0], "200"))
+        {}
+        else {
+          echo 'Coś poszło nie tak...'; // jak odpowiedź serwera nie równa się 200.
+          exit;
+        }
+        
 
         if ($token['description']) {
           $userInfo = $token['description'];
