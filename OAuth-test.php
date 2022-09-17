@@ -44,7 +44,7 @@
           "code" => $_GET['code'] // kod który dostaniesz od dialogu OAuth, jak użytkownik nacisął a diaologie Tak.
         ));
         
-        $tokenFGC = @file_get_contents($url.'/user/authorize'.$params);
+        $tokenFGC = @file_get_contents($url.'/user/authorize?'.$params);
         $token = json_decode($tokenFGC, true);
         //
         if (strpos($http_response_header[0], "200"))
