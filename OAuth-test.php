@@ -11,7 +11,7 @@
     <script>
       var oauth = {
         client_id: '<?=$client_id?>', // klient id aplikacji.
-        scope: 'email,login,id,drive_key', // drive_key - jest poufną informacją.
+        scope: 'email,login,id', // drive_key - jest poufną informacją.
         redirect_uri: '<?=$redirect_uri?>', // redirect_uri - adres przekierowania gdzie znajduje się callback.
         display: 'page', // page lub popup.
       };
@@ -21,6 +21,7 @@
           scope: oauth.scope,
           redirect_uri: oauth.redirect_uri,
           display: oauth.display,
+          response_type: 'code', // ?code=XXX or #token
         });
       }
     </script>
