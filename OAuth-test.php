@@ -29,6 +29,21 @@
   <body>
     <a onclick="loginFs()">Zaloguj się przez Friendschool</a>
     <br>
+    
+    <script>
+      var tokenCode = location.hash.split('#token=')[1];
+      if (tokenCode) {
+        var callbacks = FS.callback({
+          client_id: '<?=$client_id?>',
+          code: tokenCode,
+        });
+        if (callbacks != 'error') {
+          alert('Imię: '+callbacks.username+'\n'+'Nazwisko: '+callbacks.surname+'\n E-mail: '+callbacks.email+'\n Login: '+callbacks.login);
+        }
+      }
+    </script>
+    <div id="root"></div>
+    
     <?php
       $url = 'https://oauth.friendschool.ct8.pl'; // url skąd będzie wyciągana informacja.
 
