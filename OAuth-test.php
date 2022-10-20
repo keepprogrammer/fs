@@ -7,7 +7,7 @@
       $client_id = 'YOURS_client_id';
       $redirect_uri = 'YOURS_redirect_uri';
     ?>
-    <script src="https://friendschool.ct8.pl/js/api/openapi.js"></script>
+    <script src="https://friendschool.ct8.pl/js/api/openapi.js?1"></script>
     <script>
       var oauth = {
         client_id: '<?=$client_id?>', // klient id aplikacji.
